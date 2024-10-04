@@ -1,12 +1,14 @@
-import { connection } from "../database.js";
+import { connection } from "../config/database.js";
 import { mapObjectToUpdateQuery } from "../utils/sqlUtils.js";
 
+
+// types 
 export type TransactionTypes =
-  | "groceries"
-  | "restaurant"
-  | "transport"
-  | "education"
-  | "health";
+    | "groceries"
+    | "restaurant"
+    | "transport"
+    | "education"
+    | "health";
 
 export interface Card {
   id: number;
@@ -25,6 +27,9 @@ export interface Card {
 export type CardInsertData = Omit<Card, "id">;
 export type CardUpdateData = Partial<Card>;
 
+
+// querys 
+
 export async function find() {
   const result = await connection.query<Card>("SELECT * FROM cards");
   return result.rows;
@@ -42,7 +47,7 @@ export async function findById(id: number) {
 export async function findByTypeAndEmployeeId(
   type: TransactionTypes,
   employeeId: number
-) {
+){
   const result = await connection.query<Card, [TransactionTypes, number]>(
     `SELECT * FROM cards WHERE type=$1 AND "employeeId"=$2`,
     [type, employeeId]

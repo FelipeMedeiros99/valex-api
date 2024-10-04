@@ -1,5 +1,6 @@
-import { connection } from "../database.js";
+import { connection } from "../config/database.js";
 
+// types 
 export interface Recharge {
   id: number;
   cardId: number;
@@ -7,6 +8,9 @@ export interface Recharge {
   amount: number;
 }
 export type RechargeInsertData = Omit<Recharge, "id" | "timestamp">;
+
+
+// querys 
 
 export async function findByCardId(cardId: number) {
   const result = await connection.query<Recharge, [number]>(
