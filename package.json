@@ -20,7 +20,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon index.ts",
-    "prod": "npm run build && npm start"
+    "prod": "npm install && npm run build"
   },
   "keywords": [],
   "author": "",
