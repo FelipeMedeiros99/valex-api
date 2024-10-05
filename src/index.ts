@@ -1,8 +1,9 @@
 import express, { Express, json } from "express";
 import cors from "cors"
 import router from "./routes/router";
-import errorControle from "./controllers/errorControler";
+// import errorControler from "./controllers/errorControler";
 import dotenv from "dotenv";
+import { handleErrorController } from "./controllers/handleErrorControler";
 
 dotenv.config()
 
@@ -12,6 +13,7 @@ const app:Express = express();
 app.use(cors());
 app.use(json());
 app.use(router);
-app.use(errorControle);
+app.use(handleErrorController);
+// app.use(errorControler);
 
 app.listen(PORT, ()=>console.log(`server running`));
