@@ -8,5 +8,6 @@ app.use(json());
 app.use(router);
 
 // comit test
+// secound commit to teste2
 
 app.listen(5000, ()=>console.log("servidor funcionando na porta 5000"));
